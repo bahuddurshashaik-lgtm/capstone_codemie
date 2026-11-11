@@ -133,7 +133,8 @@ test('createTask gives each task its own id', async () => {
 
 test('createTask without an injected id function uses a UUID', async () => {
   const store = createMemoryStore();
-  const service = createTaskService({ store });
+  const clock = createClock(at(2026, 11, 5));
+  const service = createTaskService({ store, clock });
 
   const task = await service.createTask(goodInput);
 
